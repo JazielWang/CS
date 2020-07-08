@@ -3,6 +3,7 @@ pulic static void main{
 System.out.println("HelloWorld")
 }ccccccccccc
 }
+bbbbbbbbbbbbbbbbbbbbbbb
 print("hello,world!")
 pullic class Student(){
 	public static void main(System[] args){
