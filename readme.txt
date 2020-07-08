@@ -1,7 +1,7 @@
 pulic class HelloWorld{
 pulic static void main{
 System.out.println("HelloWorld")
-}aaaaaaaaaaaa
+}ccccccccccc
 }
 print("hello,world!")
 pullic class Student(){
