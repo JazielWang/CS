@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--首先就是，命名空间和约束路径不要错-->
+
+    <!--目标对象-->
+    <bean id="target" class="com.Jaziel.aop.Target"/>
+    <!--切面对象-->
+    <bean id="myRespect" class="com.Jaziel.aop.MyRespect"/>
+    <!--配置织入：告诉 spring框架，哪些增强（前置、后置）增强哪些方法（切点）-->
+    <aop:config>
+        <!--声明切面-->
+        <aop:aspect ref="myRespect">
+            <aop:pointcut id="MyRespect" expression="execution(* com.Jaziel.aop.*.*(..))"/>
+            <!--切面： 增强（信号）       +       切点-->
+            <!--<aop:before method="before" pointcut="execution(public void com.Jaziel.aop.Target.save())"/>-->
+            <!--<aop:before method="before" pointcut="execution(* com.Jaziel.aop.*.*(..))"/>
+            <aop:after-returning method="afterReturning" pointcut="execution(* com.Jaziel.aop.*.*(..))"/>-->
+            <!--<aop:after-throwing method="Throwing" pointcut="execution(* com.Jaziel.aop.*.*(..))"/>
+            <aop:after method="after" pointcut="execution(* com.Jaziel.aop.*.*(..))"/>-->
+            <aop:before method="before" pointcut-ref="MyRespect"/>
+            <aop:around method="aroud" pointcut-ref="MyRespect"/>
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

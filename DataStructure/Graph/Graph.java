@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
- * @
+ * 深度优化和广度优化的不同体现在对下一个临近节点的处理：
+ * DFS在获得 getFirstNeighbor 后，会对这一个节点进行 DFS(isVisited, w) ，也就是会这个节点进行回溯操作，继续进行下一级查找
+ * BFS在获得 getFirstNeighbor 后，会对这一个节点进行输出，之后再寻找下一个邻接节点，重复之前步骤
  * @date 2020/9/9 - 14:29
  */
 public class Graph {

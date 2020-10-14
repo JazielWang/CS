@@ -1,0 +1,28 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!--初始化全局变量-->
+  <context-param>
+    <!--param-name 必须是 contextConfigLocation，否则会报错-->
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+  <!--配置监听器-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>UserWebTest</servlet-name>
+    <servlet-class>com.Jaziel.web.UserWebTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserWebTest</servlet-name>
+    <url-pattern>/userWebTest</url-pattern>
+  </servlet-mapping>
+</web-app>
