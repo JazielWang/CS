@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Jaziel_spring_MVC:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/Jaziel_spring_MVC_war</output-path>
-    <root id="archive" name="Jaziel_spring_MVC_war.war">
-      <element id="artifact" artifact-name="Jaziel_spring_MVC:war exploded" />
-    </root>
-  </artifact>
-</component>
