@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--将获取的结果封装到 User 中-->
+<mapper namespace="com.Jaziel.mapper.UserMapper">
+
+    <!--sql语句的抽取-->
+    <sql id="userSelect">select * from user</sql>
+
+    <!--查询-->
+    <select id="findByCondition" resultType="com.Jaziel.domain.User" parameterType="user">
+        <include refid="userSelect"/>
+        <where>
+            <if test="id!=0">
+                and id=#{id}
+            </if>
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIds" resultType="user" parameterType="list">
+        <include refid="userSelect"/>
+        <where>
+            <foreach collection="list" open="id in(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+
+</mapper>

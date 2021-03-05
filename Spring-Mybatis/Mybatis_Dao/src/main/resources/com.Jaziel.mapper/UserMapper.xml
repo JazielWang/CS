@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--将获取的结果封装到 User 中-->
+<mapper namespace="com.Jaziel.dao.DaoMapper">
+    <!--查询-->
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <!--根据 id 查询信息-->
+    <select id="findById" resultType="user" parameterType="int">
+        select * from user where id=#{id};
+    </select>
+
+</mapper>

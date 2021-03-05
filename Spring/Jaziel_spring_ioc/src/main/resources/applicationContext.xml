@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--无参构造方法实例化-->
+    <!--<bean id="userDao" class="com.Jaziel.dao.Imp.UserDao"></bean>-->
+    <!--初始化方法和销毁方法-->
+    <!--<bean id="userDao" class="com.Jaziel.dao.Imp.UserDao" init-method="init" destroy-method="destroy"/>-->
+    <!--工厂静态方法实例化-->
+    <!--<bean id="userDao" class="com.Jaziel.Factory.StaticFactory" factory-method="getUserDao"></bean>-->
+    <!--工厂动态方法实例化-->
+    <!--<bean id="factory" class="com.Jaziel.Factory.DynamicFactory"></bean>
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+
+
+
+    <!--<bean id="userDao" class="com.Jaziel.dao.Imp.UserDao"></bean>-->
+
+    <!--依赖注入：普通数据类型-->
+    <!--<bean id="userDao" class="com.Jaziel.dao.Imp.UserDao">
+        <property name="name" value="Tom"></property>
+        <property name="age" value="12"></property>
+    </bean>-->
+
+
+    <!--依赖注入：引用数据类型-->
+    <!--set方法-依赖注入；name和ref指示的userDao是不同的，第一个是service内部对应的属性名，第二个是引用容器当中 bean 的 id-->
+    <!--<bean id="userService" class="com.Jaziel.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+    <!--注入p命名空间-->
+    <!--<bean id="userService" class="com.Jaziel.service.impl.UserServiceImpl" p:userDao-ref="userDao"/>-->
+
+    <!--构造方法-依赖注入；name和ref指示的userDao是不同的，第一个是构造器内部的参数名，第二个是引用容器当中 bean 的 id-->
+    <bean id="userService" class="com.Jaziel.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+
+    <!--依赖注入：集合数据类型-->
+    <bean id="userDao" class="com.Jaziel.dao.Imp.UserDao">
+        <!--list-->
+        <property name="userName">
+            <list>
+                <value>Tom</value>
+                <value>Jerry</value>
+                <value>Dog</value>
+            </list>
+        </property>
+        <!--HashMap-->
+        <property name="user">
+            <map>
+                <entry key="u1" value-ref="user1"/>
+                <entry key="u2" value-ref="user2"/>
+            </map>
+        </property>
+        <!--properties-->
+        <property name="properties">
+            <props>
+                <prop key="p1">aaa</prop>
+                <prop key="p2">bbb</prop>
+                <prop key="p3">ccc</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="user1" class="com.Jaziel.domain.User">
+        <property name="name" value="Tony"/>
+        <property name="add" value="beijing"/>
+    </bean>
+    <bean id="user2" class="com.Jaziel.domain.User">
+        <property name="name" value="John"/>
+        <property name="add" value="shanghai"/>
+    </bean>
+    <!--引入其他配置文件-分模块开发-->
+    <import resource="applicationContext-user.xml"/>
+    <import resource="applicationContext-product.xml"/>
+</beans>

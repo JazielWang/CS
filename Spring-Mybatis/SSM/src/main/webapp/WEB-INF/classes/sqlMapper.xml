@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--加载properties映射文件-->
+    <properties resource="jdbc.properties"/>
+
+    <!--定义别名-->
+    <typeAliases>
+        <!--<typeAlias type="com.Jaziel.domain" alias="account"/>-->
+        <!--另一种方法获得方法的别名:扫包，包里所有实体都会产生别名——产生的别名就是 类名/类名的小写-->
+        <package name="com.Jaziel.domain"/>
+    </typeAliases>
+
+    <!--环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射-->
+    <mappers>
+        <mapper resource="com.Jaziel.mapper/AccountMapper.xml"/>
+    </mappers>
+</configuration>

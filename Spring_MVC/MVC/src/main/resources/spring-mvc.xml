@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--Controller的扫描-->
+    <context:component-scan base-package="com.Jaziel.controller">
+        <!--可以指定特定扫描位置-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--配置内部资源视图解析器-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置处理器映射器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>-->
+    <!--mvc注解驱动，替代上方配置-->
+    <mvc:annotation-driven/>
+
+    <!--开发资源的访问-->
+    <!--<mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>-->
+    <!--如果MVC找不到资源，就交给原始的框架去寻找（此处是 tomcat）-->
+    <mvc:default-servlet-handler/>
+
+    <!--声明转换器  失败了-->
+    <!--<bean id="conversionServiceFactoryBean" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.Jaziel.Dao.DataConvers"/>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--配置文件上传解析器-->
+    <!--必须要配置 bean id="multipartResolver"，否则上传内容为null-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="102400"/>
+    </bean>
+</beans>

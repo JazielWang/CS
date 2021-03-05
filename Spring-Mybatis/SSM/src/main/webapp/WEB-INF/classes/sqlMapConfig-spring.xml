@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--定义别名-->
+    <typeAliases>
+        <!--<typeAlias type="com.Jaziel.domain" alias="account"/>-->
+        <!--另一种方法获得方法的别名:扫包，包里所有实体都会产生别名——产生的别名就是 类名/类名的小写-->
+        <package name="com.Jaziel.domain"/>
+    </typeAliases>
+
+    <!--加载映射-->
+    <!--????无法被applicationContext.xml 中的MapperScannerConfigurer所替代？？？-->
+    <mappers>
+        <mapper resource="com.Jaziel.mapper/AccountMapper.xml"/>
+    </mappers>
+</configuration>
