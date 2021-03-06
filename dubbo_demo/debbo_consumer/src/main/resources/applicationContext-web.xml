@@ -20,4 +20,6 @@
     <dubbo:registry address="zookeeper://192.168.77.110:2181"/>
     <!-- 扫描的方式暴露接口  -->
     <dubbo:annotation package="com.Jaziel.controller" />
+    <!--关闭启动时检查-->
+    <dubbo:consumer check="false"/>
 </beans>
