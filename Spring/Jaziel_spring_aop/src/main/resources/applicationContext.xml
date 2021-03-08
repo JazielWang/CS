@@ -25,6 +25,4 @@
             <aop:around method="aroud" pointcut-ref="MyRespect"/>
         </aop:aspect>
     </aop:config>
-
-
 </beans>

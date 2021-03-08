@@ -22,7 +22,7 @@ public class DataSourceConfigration {
     public DataSource getDataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass(driver);
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/demo_01?characterEncoding=utf-8&characterEncoding=utf-8&serverTimezone=UTC");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/demo_01?characterEncoding=utf-8&serverTimezone=UTC");
         dataSource.setUser("root");
         dataSource.setPassword("wedzbze74");
         return dataSource;

@@ -1,7 +1,7 @@
 package com.Jaziel.web;
 
 import com.Jaziel.Service.userService;
-import com.Jaziel.config.SpringConfigration;
+import com.Jaziel.config.SpringConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,7 +14,7 @@ import javax.sql.DataSource;
  */
 public class userControl {
     public static void main(String[] args) {
-        ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfigration.class);
+        ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         userService bean = app.getBean(userService.class);
         bean.save();
     }

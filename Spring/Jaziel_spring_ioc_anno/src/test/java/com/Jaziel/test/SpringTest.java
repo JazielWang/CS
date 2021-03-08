@@ -19,15 +19,13 @@ import java.sql.SQLException;
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration("classpath:applicationContext.xml")
 @ContextConfiguration(classes = {SpringConfiguration.class})
-public class ApringTest {
+public class SpringTest {
     @Autowired
     private userServiceImpl userService;
-    @Autowired
-    private DataSource dataSource;
 
     @Test
     public void test() throws SQLException {
         userService.save();
-        System.out.println(dataSource.getConnection());
+
     }
 }

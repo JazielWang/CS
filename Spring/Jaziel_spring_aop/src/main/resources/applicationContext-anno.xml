@@ -9,7 +9,6 @@
 
     <!--组件扫描-->
     <context:component-scan base-package="com.Jaziel.anno"/>
-
     <!--aop代理-->
     <aop:aspectj-autoproxy/>
 

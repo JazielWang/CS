@@ -17,6 +17,6 @@ import java.beans.PropertyVetoException;
 @ComponentScan("com.Jaziel")
 // <import resource=""> 引入其他配置文件（分模块管理）
 @Import({DataSourceConfigration.class})
-public class SpringConfigration {
+public class SpringConfiguration {
 
 }
