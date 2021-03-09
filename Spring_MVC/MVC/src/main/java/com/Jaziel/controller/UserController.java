@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
@@ -57,6 +58,14 @@ public class UserController {
     @ResponseBody
     public void save19(@RequestHeader(value = "User-Agent", required = false) String user_agent) throws JsonProcessingException {
         System.out.println(user_agent);
+    }
+
+    @RequestMapping(value = "/quick23")
+    @ResponseBody
+    public void save23(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException{
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
     }
 
     @RequestMapping(value = "/quick18")
