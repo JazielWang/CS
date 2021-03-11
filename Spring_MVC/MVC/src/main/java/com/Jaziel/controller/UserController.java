@@ -2,6 +2,7 @@ package com.Jaziel.controller;
 
 import com.Jaziel.Dao.Imp.UserDao;
 import com.Jaziel.Dao.VO;
+import com.Jaziel.POJO.User;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +27,12 @@ import java.util.List;
  */
 @Controller
 public class UserController {
+    @RequestMapping(value = "/quick24")
+    public String save24(Model model) {
+        model.addAttribute(new User());
+        return "success";
+    }
+
     @RequestMapping(value = "/quick22")
     @ResponseBody
     public void save22(String name, MultipartFile[] update) throws IOException {
