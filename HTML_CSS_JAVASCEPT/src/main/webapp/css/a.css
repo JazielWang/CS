@@ -1,0 +1,13 @@
+#div_2{
+    font-size: 50px;
+    color: red;
+    text-align: center;
+    line-height: 200px;
+    border: red solid 20px;
+    background: url("../img/5a60233fe7bce7251e7c3c5a.jpg");
+}
+
+#div_1{
+    border: green solid 20px;
+
+}
