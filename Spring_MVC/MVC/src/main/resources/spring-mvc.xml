@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
                             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+                            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/p https://www.springframework.org/schema/p/spring-p.xsd">
 
     <!--Controller的扫描-->
+    <context:property-placeholder location="classpath:ValidationMessages.properties"/>
     <context:component-scan base-package="com.Jaziel.controller">
         <!--可以指定特定扫描位置-->
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--配置内部资源视图解析器-->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jsp/"/>
         <property name="suffix" value=".jsp"/>
-        <!--如果想让InternalResourceViewResolver将视图解析为JstlView，而不是InternalResourceView的话，那么我们只需设置它的viewClass属性-->
-       <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+        &lt;!&ndash;如果想让InternalResourceViewResolver将视图解析为JstlView，而不是InternalResourceView的话，那么我们只需设置它的viewClass属性&ndash;&gt;
+       &lt;!&ndash; <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>&ndash;&gt;
+    </bean>-->
+    <bean id="viewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver"
+          p:templateEngine-ref="templateEngine" />
+    <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine"
+          p:templateResolver-ref="templateResolver" />
+    <bean id="templateResolver"
+          class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
+          p:prefix="/WEB-INF/templates/" p:suffix=".html" p:templateMode="HTML5" >
+        <constructor-arg ref="servletContext"/>
     </bean>
 
     <!--配置处理器映射器-->

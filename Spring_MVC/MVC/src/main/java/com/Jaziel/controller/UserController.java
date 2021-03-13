@@ -29,8 +29,8 @@ import java.util.List;
 public class UserController {
     @RequestMapping(value = "/quick24")
     public String save24(Model model) {
-        model.addAttribute(new User());
-        return "success";
+        model.addAttribute("user", new User());
+        return "success-bool";
     }
 
     @RequestMapping(value = "/quick22")
@@ -38,7 +38,7 @@ public class UserController {
     public void save22(String name, MultipartFile[] update) throws IOException {
         System.out.println(name);
         /*获得上传文件名称*/
-        for (MultipartFile multipartFile : update){
+        for (MultipartFile multipartFile : update) {
             String originalFilename = multipartFile.getOriginalFilename();
             multipartFile.transferTo(new File("E:\\Google\\" + originalFilename));
         }
@@ -69,7 +69,7 @@ public class UserController {
 
     @RequestMapping(value = "/quick23")
     @ResponseBody
-    public void save23(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException{
+    public void save23(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
         System.out.println(request);
         System.out.println(response);
         System.out.println(session);
@@ -81,7 +81,9 @@ public class UserController {
         System.out.println(data);
     }
 
-    /**http://localhost:9080/quick17/zhangsan*/
+    /**
+     * http://localhost:9080/quick17/zhangsan
+     */
     @RequestMapping(value = "/quick17/{name}")
     @ResponseBody
     public void save17(@PathVariable(value = "name") String name) throws JsonProcessingException {
@@ -90,7 +92,7 @@ public class UserController {
 
     @RequestMapping(value = "/quick16")
     @ResponseBody
-    public void save16(@RequestParam(value="username", required = false, defaultValue = "itcase") String name) throws JsonProcessingException {
+    public void save16(@RequestParam(value = "username", required = false, defaultValue = "itcase") String name) throws JsonProcessingException {
         System.out.println(name);
     }
 
@@ -158,8 +160,8 @@ public class UserController {
 
     @RequestMapping(value = "/quick7")
     /**
-    @ResponseBody 告诉spring框架不进行视图跳转，直接进行数据响应；之前都是警醒跳转拼接 .jsp
-    */
+     @ResponseBody 告诉spring框架不进行视图跳转，直接进行数据响应；之前都是警醒跳转拼接 .jsp
+     */
     @ResponseBody
     public String save7() {
         return "hello, wj.";

@@ -1,38 +1,42 @@
 package com.Jaziel.POJO;
 
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.lang.NonNull;
+
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 用户
  */
-public class User implements Serializable{
-    private Integer id; // 主键
-    private Date birthday; // 生日
-    private String gender; // 性别
-    private String username; // 用户名，唯一
-    private String password; // 密码
-    private String remark; // 备注
-    private String station; // 状态
-    private String telephone; // 联系电话
 
+public class User{
 
-    public Integer getId() {
-        return id;
+    @NonNull
+    @Size(max = 2, min = 1, message = "${gender.size}")
+    private String gender = ""; // 性别
+
+    @NonNull
+    @Size(max = 4, min = 2, message = "${username.size}")
+    private String username = ""; // 用户名，唯一
+
+    @NonNull
+    @Size(max = 11, min = 6, message = "{password.size}")
+    private String password = ""; // 密码
+
+    @NonNull
+    @Size(max = 11, min = 11, message = "{telephone.size}")
+    private String telephone = ""; // 联系电话
+
+    public User(@NonNull @Size(max = 2, min = 1, message = "{gender.size}") String gender, @NonNull @Size(max = 4, min = 2, message = "{username.size}") String username, @NonNull @Size(max = 11, min = 6, message = "{password.size}") String password, @NonNull @Size(max = 11, min = 11, message = "{telephone.size}") String telephone) {
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+        this.telephone = telephone;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public User() {
     }
 
     public String getGender() {
@@ -59,22 +63,6 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getStation() {
-        return station;
-    }
-
-    public void setStation(String station) {
-        this.station = station;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -86,12 +74,9 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" +
-                "birthday=" + birthday +
                 ", gender='" + gender + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", remark='" + remark + '\'' +
-                ", station='" + station + '\'' +
                 ", telephone='" + telephone + '\'' +
                 '}';
     }
