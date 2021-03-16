@@ -30,7 +30,7 @@ public class UserController {
     @RequestMapping(value = "/quick24")
     public String save24(Model model) {
         model.addAttribute("user", new User());
-        return "success-bool";
+        return "spittles";
     }
 
     @RequestMapping(value = "/quick22")

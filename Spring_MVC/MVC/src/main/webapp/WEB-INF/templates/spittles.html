@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>sp</title>
+</head>
+<body>
+<!--/*@thymesVar id="user" type="com.Jaziel.POJO.User"*/-->
+<form method="POST" th:object="${user}">
+    <div class="errors" th:if="${#fields.hasErrors('*')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}"
+                th:text="${err}">Input is incorrect</li>
+        </ul>
+    </div>
+    <label th:class="${#fields.hasErrors('username')}? 'error'">Username</label>:
+    <input th:class="${#fields.hasErrors('username')}? 'error'" th:field="*{username}"
+           type="text"/><br/>
+
+    <label th:class="${#fields.hasErrors('password')}? 'error'">Password</label>:
+    <input type="password" th:field="*{password}"
+           th:class="${#fields.hasErrors('password')}? 'error'" /><br/>
+    <label th:class="${#fields.hasErrors('telephone')}? 'error'">telephone</label>:
+    <input type="text" th:field="*{telephone}"
+           th:class="${#fields.hasErrors('telephone')}? 'error'" /><br/>
+
+    <label th:class="${#fields.hasErrors('gender')}? 'error'">gender</label>:
+    <input type="text" th:field="*{gender}"
+           th:class="${#fields.hasErrors('gender')}? 'error'" /><br/>
+
+
+    <input type="submit" value="Register" />
+</form>
+</body>
+</html>
