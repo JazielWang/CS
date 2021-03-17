@@ -26,3 +26,9 @@ document.write(Math.random() + "<br>");
 var red = /^[\d]{4,5}$/;
 var boo = red.test("qwee1")
 document.write(boo + "<br>")
+
+var url = "智慧";
+var u = encodeURI(url);
+var uri1 = decodeURI(u);
+document.write(u + "<br>");
+document.write(uri1 + "<br>");
