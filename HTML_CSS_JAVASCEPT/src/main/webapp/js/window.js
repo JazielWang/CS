@@ -24,7 +24,6 @@ setInterval(fun, 3000);*/
 var lunbo = document.getElementById("light");
 setInterval(fun, 3000);
 var num = 1;
-
 function fun() {
     num++;
     if (num > 3) {
