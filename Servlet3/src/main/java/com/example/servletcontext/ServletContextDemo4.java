@@ -22,10 +22,13 @@ public class ServletContextDemo4 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext servletContext = req.getServletContext();
+        // webapp 目录下的文件
         String realPath = servletContext.getRealPath("/b.txt");
         System.out.println(realPath);
+        // WEB-INF 目录下的文件
         String c = servletContext.getRealPath("/WEB-INF/c.txt");
         System.out.println(c);
+        // src 目录下的文件
         String a = servletContext.getRealPath("/WEB-INF/classes/a.txt");
         System.out.println(a);
     }
