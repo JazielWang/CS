@@ -19,8 +19,8 @@ public class CookieDemo03 extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String s = "你好";
-        String encode = URLEncoder.encode(s);
-        Cookie cookie = new Cookie("msg", encode);
+
+        Cookie cookie = new Cookie("msg", s);
         Cookie c2 = new Cookie("dkl", "xxx");
         c2.setMaxAge(30);
         resp.addCookie(cookie);
