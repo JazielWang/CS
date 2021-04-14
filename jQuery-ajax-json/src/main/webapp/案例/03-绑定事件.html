@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-migrate-1.0.0.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+           //1.获取name对象，绑定click事件
+           /*$("#name").click(function () {
+               alert("我被点击了...")
+           });*/
+
+           //给name绑定鼠标移动到元素之上事件。绑定鼠标移出事件
+            /*$("#name").mouseover(function () {
+               alert("鼠标来了...")
+            });
+
+            $("#name").mouseout(function () {
+                alert("鼠标走了...")
+            });*/
+
+            //简化操作，链式编程
+            /*$("#name").mouseover(function () {
+                alert("鼠标来了...")
+            }).mouseout(function () {
+                alert("鼠标走了...")
+            });*/
+            // alert("我要获得焦点了...")
+            //$("#name").focus();//让文本输入框获得焦点
+            //表单对象.submit();//让表单提交
+
+
+
+
+
+            //1.使用on给按钮绑定单击事件  click
+            /*$("#btn").on("click", function () {
+                alert("我被点了");
+            });
+            $("#btn2").click(function () {
+                $("#btn").off("click");
+            })*/
+
+
+
+
+
+            //获取按钮，调用toggle方法
+            $("#btn3").toggle(function (){
+                $("#myDiv").css("backgroundColor", "pink");
+            }, function () {
+                $("#myDiv").css("backgroundColor", "blue");
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<input id="name" type="text" value="绑定点击事件">
+<input id="btn" type="button" value="使用on绑定点击事件">
+<input id="btn2" type="button" value="使用off解绑点击事件">
+<input id="btn3" type="button" value="事件切换">
+<div id="myDiv" style="width:300px;height:300px;background:pink">
+    点击按钮变成绿色，再次点击红色
+</div>
+</body>
+</html>
