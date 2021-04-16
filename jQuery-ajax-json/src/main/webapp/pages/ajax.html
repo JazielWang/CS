@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        function fun() {
+            $.ajax({
+                url:"/ajaxServlet",
+                type:"get",
+                data:{"username":"jack", "age":23},
+                success:function (data){
+                    alert(data)
+                },
+                error:function () {
+                    alert("数据错误！！！")
+                }
+            })
+        }
+        function fun2() {
+            $.get("/ajaxServlet",{username:"tom"}, function (data) {
+                alert(data)
+            }, "text");
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="ajax练习" onclick="fun2()">
+<input type="text" name="msg">
+</body>
+</html>
