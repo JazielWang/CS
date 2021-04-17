@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        var js = [{name:"lisi", age:23, gender:"man"},{name:"wangwu", age:25, gender:"woman"}]
+        var name = js[0].name;
+        // alert(name)
+        var person = {
+            "person":[{name:"lj", age: 56, gender:"woman"}, {name:"dqy", age: 56, gender:"woman"}, {name:"lsj", age: 56, gender:"woman"}]
+        };
+        var gender = person.person[1].gender;
+        // alert(gender)
+
+        /*for (let j of js) {
+            alert(j.name)
+        }*/
+        for (let i = 0; i < js.length; i++) {
+            var j = js[i];
+            for (let jKey in j) {
+                alert(jKey +":"+j[jKey])
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
