@@ -3,6 +3,12 @@ var fun = function (a, b) {
 }
 fun(1, 2);
 
+function testPhone(phoneNumber) {
+    var reg = /[1][2][7][\d]{1,7}/;
+
+    return reg.test(phoneNumber);
+}
+
 function f(a, b, c) {
     document.write(arguments[4] + "<br/>");
 }

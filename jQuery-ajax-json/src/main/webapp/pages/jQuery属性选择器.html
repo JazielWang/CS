@@ -48,15 +48,19 @@
                 $("div[title = 'test']").css("backgroundColor", "pink");
             });
             $("#b3").click(function () {
+                // 属性title值不等于test的div元素(没有属性title的也将被选中)
                 $("div[title != 'test']").css("backgroundColor", "pink");
             });
             $("#b4").click(function () {
+                // 属性title值 以te开始 的div元素
                 $("div[title ^= 'te']").css("backgroundColor", "pink");
             });
             $("#b5").click(function () {
+                // 属性title值 以est结尾 的div元素
                 $("div[title $= 'est']").css("backgroundColor", "pink");
             });
             $("#b6").click(function () {
+                // 属性title值 包含es 的div元素
                 $("div[title *= 'es']").css("backgroundColor", "pink");
             });
             $("#b7").click(function () {

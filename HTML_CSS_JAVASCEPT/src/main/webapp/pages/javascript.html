@@ -16,6 +16,15 @@
         let nu = null;
         let bc = undefined;
         let de;
+        window.onload = function () {
+            var phoneNumbr = 1271234567890;
+            var b = testPhone(phoneNumbr);
+            if (b){
+                alert("yes");
+            }else {
+                alert("no");
+            }
+        }
         document.write((typeof (num)) + "<br/>");
         document.write(`${typeof (string)}<br/>`);
         document.write((typeof (boolean)) + "<br/>");
