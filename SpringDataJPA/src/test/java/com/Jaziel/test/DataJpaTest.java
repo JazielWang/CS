@@ -1,6 +1,7 @@
 package com.Jaziel.test;
 
 import com.Jaziel.POJO.Customer;
+import com.Jaziel.utils.JpaUtils;
 import org.junit.Test;
 
 import javax.persistence.*;
@@ -31,5 +32,58 @@ public class DataJpaTest {
         //释放资源
         entityManager.close();
         factory.close();
+    }
+
+    @Test
+    public void findTest(){
+        EntityManager jpaManager = JpaUtils.getJpaManager();
+        EntityTransaction transaction = jpaManager.getTransaction();
+        transaction.begin();
+        /*find() 和 getReference() 中主要使用 getReference*/
+        // Customer customer = jpaManager.find(Customer.class, 1L);
+        Customer customer = jpaManager.getReference(Customer.class, 1L);
+        System.out.println(customer);
+        transaction.commit();
+        jpaManager.close();
+    }
+
+    @Test
+    public void updateTest(){
+        EntityManager jpaManager = null;
+        EntityTransaction transaction = null;
+        try {
+            jpaManager = JpaUtils.getJpaManager();
+            transaction = jpaManager.getTransaction();
+            transaction.begin();
+            Customer customer = jpaManager.find(Customer.class, 1L);
+            customer.setName("lj");
+            jpaManager.clear();
+            jpaManager.merge(customer);
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            transaction.rollback();
+        }finally {
+            jpaManager.close();
+        }
+    }
+
+    @Test
+    public void deleteTest(){
+        EntityManager jpaManager = null;
+        EntityTransaction transaction = null;
+        try {
+            jpaManager = JpaUtils.getJpaManager();
+            transaction = jpaManager.getTransaction();
+            transaction.begin();
+            Customer customer = jpaManager.find(Customer.class, 1L);
+            jpaManager.remove(customer);
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            transaction.rollback();
+        }finally {
+            jpaManager.close();
+        }
     }
 }
