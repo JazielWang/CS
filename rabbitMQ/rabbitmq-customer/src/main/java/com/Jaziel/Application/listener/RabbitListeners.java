@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RabbitListeners {
-
     @RabbitListener(queues = "jaziel_queue")
     public void myListener(String message){
         System.out.println("接收到的消息是：" + message);
