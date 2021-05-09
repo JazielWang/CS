@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>elastic-search</artifactId>
+    <artifactId>SpringDataES</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
@@ -83,5 +82,27 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.2.10.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>3.0.5.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.elasticsearch.plugin</groupId>
+                    <artifactId>transport‐netty4‐client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+            <version>5.6.8</version>
+        </dependency>
+
     </dependencies>
 </project>
