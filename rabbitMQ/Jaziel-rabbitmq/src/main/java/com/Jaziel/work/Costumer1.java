@@ -17,7 +17,7 @@ public class Costumer1 {
         //2. 创建连接；（抽取一个获取连接的工具类）
         Connection connection = ConnectionUtil.getConnection();
         //3. 创建频道；
-        Channel channel = connection.createChannel();
+        final Channel channel = connection.createChannel();
         //4. 声明队列；
         /**
          * 参数1：队列名称

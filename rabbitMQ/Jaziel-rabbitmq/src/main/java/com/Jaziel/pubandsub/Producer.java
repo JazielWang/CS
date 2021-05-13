@@ -46,7 +46,7 @@ public class Producer {
         channel.queueBind(FANOUT_QUEUE_1, FANOUT_EXCHANGE, "");
         channel.queueBind(FANOUT_QUEUE_2, FANOUT_EXCHANGE, "");
         // 5. 发送消息
-        for (int i =1; i<=10; i++) {
+        for (int i = 1; i <= 10; i++) {
             String message = "hello, rabbit" + i;
             channel.basicPublish(FANOUT_EXCHANGE, "", null, message.getBytes());
         }

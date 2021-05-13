@@ -15,7 +15,7 @@ public class Costumer2 {
         //2. 创建连接；（抽取一个获取连接的工具类）
         Connection connection = ConnectionUtil.getConnection();
         //3. 创建频道；
-        Channel channel = connection.createChannel();
+        final Channel channel = connection.createChannel();
         // 4. 声明交换机
         channel.exchangeDeclare(Producer.TOPIC_EXCHANGE, BuiltinExchangeType.TOPIC);
         //4. 声明队列；
