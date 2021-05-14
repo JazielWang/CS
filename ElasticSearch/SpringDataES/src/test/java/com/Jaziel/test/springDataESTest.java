@@ -57,8 +57,7 @@ public class springDataESTest {
     public void deleteTest(){
         Article article = new Article();
         article.setId(4);
-        article.setTitle("测试SpringData ElasticSearch");
-        article.setContext("Spring Data为Elasticsearch Elasticsearch项目提供集成搜索引擎");
+
         articleService.delete(article);
     }
 

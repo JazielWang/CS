@@ -233,7 +233,7 @@ public class ES {
 
         SearchRequestBuilder search = client.prepareSearch("index2").setTypes("article").
                 setQuery(QueryBuilders.matchAllQuery());//默认每页10条记录
-    // 查询第2页数据，每页20条
+        // 查询第2页数据，每页20条
         //setFrom()：从第几条开始检索，默认是0。
         //setSize():每页最多显示的记录数。
         SearchResponse searchResponse = search.setFrom(0).setSize(5).get();
