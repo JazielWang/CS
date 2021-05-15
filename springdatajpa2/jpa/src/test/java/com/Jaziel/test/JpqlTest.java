@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class JpqlTest {
     @Test
-    public void findAllTest(){
+    public void findAllTest() {
         EntityManager jpaManager = null;
         EntityTransaction transaction = null;
         try {
@@ -27,16 +27,19 @@ public class JpqlTest {
                 System.out.println(o);
             }
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            transaction.rollback();
-        }finally {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            assert jpaManager != null;
             jpaManager.close();
         }
     }
 
     @Test
-    public void pagesTest(){
+    public void pagesTest() {
         EntityManager jpaManager = null;
         EntityTransaction transaction = null;
         try {
@@ -51,16 +54,16 @@ public class JpqlTest {
                 System.out.println(o);
             }
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-        }finally {
+        } finally {
             jpaManager.close();
         }
     }
 
     @Test
-    public void conditionTest(){
+    public void conditionTest() {
         EntityManager jpaManager = null;
         EntityTransaction transaction = null;
         try {
@@ -68,19 +71,19 @@ public class JpqlTest {
             transaction = jpaManager.getTransaction();
             transaction.begin();
             Query query = jpaManager.createQuery("from Customer where cust_name like ?1");
-            query.setParameter(1,"wj%");
+            query.setParameter(1, "wj%");
             System.out.println(query.getSingleResult());
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-        }finally {
+        } finally {
             jpaManager.close();
         }
     }
 
     @Test
-    public void orderTest(){
+    public void orderTest() {
         EntityManager jpaManager = null;
         EntityTransaction transaction = null;
         try {
@@ -93,16 +96,16 @@ public class JpqlTest {
                 System.out.println(o);
             }
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-        }finally {
+        } finally {
             jpaManager.close();
         }
     }
 
     @Test
-    public void countTest(){
+    public void countTest() {
         EntityManager jpaManager = null;
         EntityTransaction transaction = null;
         try {
@@ -112,10 +115,10 @@ public class JpqlTest {
             Query query = jpaManager.createQuery("select count(cust_id) from Customer");
             System.out.println(query.getSingleResult());
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-        }finally {
+        } finally {
             jpaManager.close();
         }
     }

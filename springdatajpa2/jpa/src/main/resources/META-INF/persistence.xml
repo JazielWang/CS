@@ -9,13 +9,12 @@
     transaction-type：事务类型
          RESOURCE_LOCAL：本地事务管理
          JTA：分布式事务管理 -->
-
     <persistence-unit name="myJPA" transaction-type="RESOURCE_LOCAL">
         <!--配置JPA规范的服务提供商 -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <!-- 数据库驱动 -->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <!-- 数据库地址 -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/demo_01?characterEncoding=utf-8&amp;serverTimezone=UTC" />
             <!-- 数据库用户名 -->

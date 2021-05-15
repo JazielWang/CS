@@ -21,7 +21,7 @@ public class DataJpaTest {
          *         其中传递的参数为持久化单元名称，需要jpa配置文件中指定
          */
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myJPA");
-        //创建实体管理类
+        // 创建实体管理类
         EntityManager entityManager = factory.createEntityManager();
         // 获取事务，并开启事务
         EntityTransaction transaction = entityManager.getTransaction();
@@ -60,6 +60,7 @@ public class DataJpaTest {
             transaction.begin();
             Customer customer = jpaManager.find(Customer.class, 1L);
             customer.setName("lj");
+            // 把c1对象从缓存中清除出去
             jpaManager.clear();
             jpaManager.merge(customer);
             transaction.commit();

@@ -1,7 +1,7 @@
 package com.Jaziel.mapper;
 
 import com.Jaziel.pojo.User;
-import org.springframework.stereotype.Component;
+
 import tk.mybatis.mapper.common.Mapper;
 
 /**
